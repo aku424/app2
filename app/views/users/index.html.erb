@@ -1,0 +1,26 @@
+<%= render 'layouts/sidebar',book: @book, user: @user %>
+
+
+
+<h1>User 一覧</h1>
+
+<div class='col-xs-9'>
+  <table>
+  	<thead>
+  		<tr>
+  			<th>image</th>
+  			<th>name</th>
+  			<th colspan="1"></th>
+  		</tr>
+  	</thead>
+    <% @users.each do |user| %>
+  	<tbody>
+  		<tr>
+  			<td><%= attachment_image_tag user, :profile_image, size: "60x60", format: 'jpeg', class: " pull-left profile-img", fallback: "no_image.jpg" %></td>
+  			<td><%= user.name %></td>
+  			<td><%= link_to "Show", user_path(user.id) %></td>
+  		</tr>
+  	</tbody>
+  	<% end %>
+  </table>
+</div>

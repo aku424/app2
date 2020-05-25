@@ -1,0 +1,27 @@
+<br>
+<br>
+<br>
+
+<h1>Editing Book</h1>
+<% if flash[:alert] %>
+  <div class="flash">
+    <%= flash[:alert] %>
+  </div>
+<% end %>
+
+<% if @book.errors.any? %>
+    <p><%= @book.errors.count %>件のエラーが発生しました</p>
+    <%= @book.errors.full_messages.each do |message|%>
+      <%=message%>
+    <% end %>
+<% end %>
+
+<%= form_for(@book) do |f| %>
+  <h3>Title</h3>
+  <%= f.text_field :title, autofocus: true, placeholder:"title"%>
+  <h3>Opinion</h3>
+  <%= f.text_area :body, autofocus: true, placeholder:"opinion"%>
+  <%= f.submit "Update Book"%>
+<% end %>
+<%= link_to "Show", book_path(@book.id)%>
+<%= link_to "Back", books_path %>

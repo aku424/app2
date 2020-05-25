@@ -1,0 +1,27 @@
+<h1>User info</h1>
+<% if flash[:alert] %>
+  <div class="flash">
+    <%= flash[:alert] %>
+  </div>
+<% end %>
+
+  <% if @user.errors.any? %>
+    <p><%= @user.errors.count %>件のエラーが発生しました</p>
+    <%= @user.errors.full_messages.each do |message|%>
+    <%=message%>
+    <% end %>
+  <% end %>
+
+<%=form_for (@user) do |f|%>
+
+  <h3>Name</h3>
+  <%= f.text_field :name, autofocus: true, placeholder:"名前"%>
+  <h3>Image</h3>
+  <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
+  <h3>Introduction</h3>
+  <%= f.text_area :introduction, autofocus: true, placeholder:"introduction"%>
+  <%= f.submit "Update User" %>
+<% end %>
+
+
+flash[:alert]

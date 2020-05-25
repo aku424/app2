@@ -1,0 +1,29 @@
+<div class="col-lg-3"></div>
+<div class="col-lg-6">
+	<br>
+	<br>
+	<br>
+  <% if flash[:notice] %>
+  <div class="flash">
+    <%= flash[:notice] %>
+  </div>
+<% else %>
+  <div class="flash">
+    <%= flash[:alert] %>
+  </div>
+<% end %>
+  <h1 class="text-center">welcome to <span class="glyphicon glyphicon-book" aria-hidden="true"></span>Bookers!!</h1>
+    <p class="text-center">you can share and exchange your opinions , inpressions , and emotions about various books!</p>
+    <br>
+    <br>
+    <br>
+  <% if user_signed_in? %>
+    <button type="button" class="btn btn-info btn-block"><%= link_to "Log in", user_path(current_user.id) %></button>
+    <button type="button" class="btn btn-success btn-block"><%= link_to "Sign Up", user_path(current_user.id) %></button>
+  <% else %>
+    <button type="button" class="btn btn-info btn-block"><%= link_to "Log in", new_user_session_path %></button>
+    <button type="button" class="btn btn-success btn-block"><%= link_to "Sign Up", new_user_registration_path %></button>
+  <% end %>
+</div>
+<div class="col-lg-3"></div>
+
