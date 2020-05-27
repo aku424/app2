@@ -21,10 +21,8 @@
       <% end %>
 
     <h2>User info</h2>
-      <table>
-          <tr>
+      <table class="table">
             <%= attachment_image_tag user, :profile_image, size: "60x60", format: 'jpeg', class: " pull-left profile-img", fallback: "no_image.jpg" %><!---->
-          </tr>
           <tr>
             <td>name</td>
             <td><%= user.name %></td><!--@user-->
@@ -35,19 +33,30 @@
           </tr>
       </table>
     <% if user.id == current_user.id %>
-      <%= link_to "Prof Edit", edit_user_path(current_user.id), class: "btn btn-default"%>
+      <div class= "col-xs-12">
+        <%= link_to "", edit_user_path(current_user.id), class: "btn btn-default btn-block glyphicon glyphicon-wrench"%>
+      </div>
     <% else %>
-      <%= link_to "Prof Edit", user_path(current_user.id), class: "btn btn-default"%>
+    <div class= "col-xs-12">
+      <%= link_to "Prof Edit", user_path(current_user.id), class: "btn btn-default btn-block glyphicon glyphicon-wrench"%>
+    </div>
     <% end %>
   </div>
+
   <div class="post-area">
     <h3>New book</h3>
     <%= form_for (book) do |f| %>
       <h4>Title</h4>
-      <%= f.text_field :title %>
+      <div class= "col-xs-12">
+        <%= f.text_field :title %>
+      </div>
       <h4>Opinion</h4>
-      <%= f.text_area :body %>
-      <%= f.submit "Create Book" %>
+      <div class= "col-xs-12">
+        <%= f.text_area :body %>
+      </div>
+      <div class= "col-xs-12">
+        <%= f.submit "Create Book", class: "btn-block" %>
+      </div>
     <% end %>
   </div>
 </div>
